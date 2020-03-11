@@ -73,5 +73,3 @@ $ yarn start
 ### Acknowledgement  
 - Material provided by [Craft Academy](https://craftacademy.se)
 - [Thomas Ochman]() for 
-
-
