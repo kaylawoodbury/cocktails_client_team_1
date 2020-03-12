@@ -14,7 +14,6 @@ const SearchBar = ({ submitFormHandler }) => {
           placeholder={searchByNamePlaceholder}
         ></input>
       </div>
-      <button id='search'>Search</button>
     </form>
   );
 };

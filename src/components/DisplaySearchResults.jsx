@@ -10,35 +10,31 @@ class DisplaySearchResults extends Component {
   }
   async getDrinkData() {
     let result = await getSearchResult();
-    this.setState({ drinkData: result.data.drinks });
+    this.setState({ drinkData: result.drinks });
   }
 
   render() {
     let listOfDrinks;
 
-    if (Array.isArray(this.state.drinkData) && this.state.drinkData.length) {
+    // if (Array.isArray(this.state.drinkData) && this.state.drinkData.length) {
       listOfDrinks = (
         <div id="result-list">
           {this.state.drinkData.map(item => {
             return (
-              <div
-                key={item.idDrink}
-                id={`drink-${item.idDrink}`}
-                data-id={item.idDrink}
-              >
-                <h4>{item.strDrink}</h4>
+              <div key={item.idDrink}>
+                <h4>Margarita</h4>
                 {item.strCategory} {item.strIBA}
               </div>
             );
           })}
         </div>
       );
-    }
-    return(
-      <>
-      {listOfDrinks}
-      </>
-    )
+    // }
+    return ( 
+    <>
+    {listOfDrinks}
+    </>
+    );
   }
 }
 export default DisplaySearchResults;
