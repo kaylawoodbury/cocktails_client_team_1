@@ -2,7 +2,7 @@ import axios from "axios";
 
 //brought over from previous project need to update to fit backend
 const getSearchResult = async () => {
-  let headers = await sessionStorage.getItem("cocktails");
+  let headers = await sessionStorage.getItem("drinks");
   headers = JSON.parse(headers);
   headers = {
     ...headers,
@@ -10,7 +10,7 @@ const getSearchResult = async () => {
     Accept: "application/json"
   };
 
-  const response = await axios.get("/cocktails", {
+  const response = await axios.get("/drinks", {
     headers: headers
   });
 

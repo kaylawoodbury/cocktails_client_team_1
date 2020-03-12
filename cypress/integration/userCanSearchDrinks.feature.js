@@ -12,14 +12,14 @@ describe("User can search", () => {
   });
   it("successfully by drink name", () => {
     cy.route({
-      method: "POST",
-      url: "http://localhost:3000", //need to update later
-      response: "fixture:",  //need to update later
+      method: "GET",
+      url: "http://localhost:3000/api/v1/cocktails", //need to update later
+      response: "fixture:margarita_drink_search.json"
     });
-    cy.get("#name-search.prompt").type("Moscow Mule");
+    cy.get("#name-search.prompt").type("Margarita");
     cy.get("button")
       .contains("Search")
       .click();
-    // cy.get("#message").should("contain", "Hi user@mail.com");
+    cy.get("#result-list").should("contain", "Margarita");
   });
 });
