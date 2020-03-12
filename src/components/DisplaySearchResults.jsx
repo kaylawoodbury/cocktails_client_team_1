@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getSearchResult } from "./modules/searchResult";
+import { getSearchResult } from "../modules/searchResult";
 
 class DisplaySearchResults extends Component {
   state = {
