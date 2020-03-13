@@ -3,7 +3,9 @@ import axios from "axios";
 
 class App extends Component {
   state = {
-    query: ""
+    query: "",
+    results: [],
+    message: ""
   };
 
   onSubmitFormHandler = async e => {
@@ -14,38 +16,49 @@ class App extends Component {
       }
     });
     if (response.status === 200) {
+      debugger
       this.setState({
-
-        drinks: response.data.drinks
+        results: response.data
       });
     } else {
+      debugger
       this.setState({
-        drink_not_found: "No drinks found"
+        message: "No drinks found",
+        results: null
       });
     }
   };
-debugger
-  render() {
-    // const { results } = this.state;
-    // debugger
-    // let renderResults;
 
-    //   if (query.length > 0) {
-    //     renderResults = (
-    //         submitFormHandler={this.state.results.map(item => {
-    //           return (
-    //             <div key={item.drinks.idDrink}>
-    //               <h4>Margarita</h4>
-    //               {item.drinks.strCategory} {item.drinks.strIBA}
-    //             </div>
-    //           );
-    //         })}
-    //     )
-    // }
+  render() {
+    let renderResults;
+    if (
+      Array.isArray(this.state.results) &&
+      this.state.results !== []
+    )
+     {
+      debugger
+      renderResults = (
+        <div id="result-list">
+          {this.state.results.map(item => {
+            return (
+              <div key={item.results.idDrink}>
+                {item.results.strDrink}{item.results.strCategory} {item.results.strIBA}
+              </div>
+            );
+          })}
+        </div>
+      )
+        }
+        
+    //  else {
+    //   debugger
+    //   return (response.message) 
+    // };
+
 
     return (
       <>
-        <form onSubmit={this.onSubmitFormHandler} id="search-by-name">
+        <form id="search-by-name">
           <div className="ui search">
             <input
               name="search-by-name"
@@ -54,12 +67,12 @@ debugger
               className="prompt"
               placeholder="Search by drink name"
             ></input>
-            <button id="search">Search</button>
+            <button id="search" onClick={this.onSubmitFormHandler} >Search</button>
           </div>
         </form>
 
         {/* <h3 id="result-list">Margarita</h3> */}
-        {/* {renderResults} */}
+        {renderResults}
       </>
     );
   }

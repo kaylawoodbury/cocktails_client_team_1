@@ -21,4 +21,17 @@ describe("User can search", () => {
       .click();
     cy.get("#result-list").should("contain", "Margarita");
   });
+
+  it("unsuccessfully by drink name", () => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v1/cocktails", //need to update later
+      response: "fixture:margarita_drink_search.json"
+    });
+    cy.get("#name-search.prompt").type("nnjthdlsndfie");
+    cy.get("button")
+      .contains("Search")
+      .click();
+    cy.get("#result-list").should("contain", "Margarita");
+  });
 });
