@@ -10,12 +10,10 @@ class App extends Component {
 
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    debugger
-    let response = await axios.post(
-      "https:localhost:3000/api/v1/cocktails",
+    let response = await axios.get("/cocktails",
       {
         params: {
-          query: e.target.query.value
+          q: e.target.query.value
         }
       }
     );
@@ -38,9 +36,8 @@ class App extends Component {
           {this.state.results.map(item => {
             return (
               <div key={item.idDrink}>
-                {item.strDrink}
-                {item.name}
-                {item.strCategory} {item.strIBA}
+                <h4>{item.name}</h4>
+                {item.Category} {item.IBA}
               </div>
             );
           })}
