@@ -1,18 +1,17 @@
 describe("User can search", () => {
   beforeEach(() => {
     cy.server();
-    cy.visit("http://localhost:3000");
+    cy.visit("http://localhost:3001");
   });
   it("search field exists", () => {
     cy.get("#name-search.prompt").should("exist");
     cy.get("#search").should("exist");
     cy.get("#search")
       .contains("Search")
-      .click();
   });
   it("successfully by drink name", () => {
     cy.route({
-      method: "GET",
+      method: "POST",
       url: "http://localhost:3000/api/v1/cocktails", //need to update later
       response: "fixture:margarita_drink_search.json"
     });

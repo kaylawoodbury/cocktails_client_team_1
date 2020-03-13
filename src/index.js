@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-//import App from "./App";
+import App from "./App";
 import * as ServiceWorker from "./serviceWorker";
-import Testing from "./Testing";
 
 
-ReactDOM.render(<Testing />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 ServiceWorker.unregister();
