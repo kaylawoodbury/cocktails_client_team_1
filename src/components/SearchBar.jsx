@@ -13,6 +13,11 @@ const SearchBar = ({ submitFormHandler }) => {
           className="prompt"
           placeholder={searchByNamePlaceholder}
         ></input>
+        <button
+          id="search"
+        >
+          Search
+        </button>
       </div>
     </form>
   );

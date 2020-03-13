@@ -15,6 +15,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        debugger
         <button
           id="search"
           onClick={() => this.setState({ renderSearchResults: true })}

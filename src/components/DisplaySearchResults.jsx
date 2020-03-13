@@ -16,20 +16,20 @@ class DisplaySearchResults extends Component {
   render() {
     let listOfDrinks;
 
-    // if (Array.isArray(this.state.drinkData) && this.state.drinkData.length) {
+    if (Array.isArray(this.state.drinkData) && this.state.drinkData.length) {
       listOfDrinks = (
         <div id="result-list">
           {this.state.drinkData.map(item => {
             return (
-              <div key={item.idDrink}>
+              <div key={item.drinks.idDrink}>
                 <h4>Margarita</h4>
-                {item.strCategory} {item.strIBA}
+                {item.drinks.strCategory} {item.drinks.strIBA}
               </div>
             );
           })}
         </div>
       );
-    // }
+   }
     return ( 
     <>
     {listOfDrinks}
