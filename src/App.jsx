@@ -15,47 +15,41 @@ class App extends Component {
         query: "name"
       }
     });
-    if (response.status === 200) {
-      debugger
+    if (response.data.status === 400) {
+      debugger;
       this.setState({
-        results: response.data.drinks
+        message: response.data.message,
+        results: null
       });
     } else {
-      debugger
+      debugger;
       this.setState({
-        message: "No drinks found",
-        results: null
+        results: response.data.drinks
       });
     }
   };
 
   render() {
     let renderResults;
-    if (
-      Array.isArray(this.state.results) &&
-      this.state.results.length > 0
-    )
-     {
-      debugger
+    if (Array.isArray(this.state.results) && this.state.results.length > 0) {
+      debugger;
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
-            debugger
+            debugger;
             return (
               <div key={item.idDrink}>
-                {item.strDrink}{item.name}{item.strCategory} {item.strIBA}
+                {item.strDrink}
+                {item.name}
+                {item.strCategory} {item.strIBA}
               </div>
             );
           })}
         </div>
-      )
-        }
-        
-    //  else {
-    //   debugger
-    //   return (response.message) 
-    // };
-
+      );
+    } else {
+      renderResults = <div id="message">{this.state.message}</div>;
+    }
 
     return (
       <>
@@ -68,11 +62,11 @@ class App extends Component {
               className="prompt"
               placeholder="Search by drink name"
             ></input>
-            <button id="search" onClick={this.onSubmitFormHandler} >Search</button>
+            <button id="search" onClick={this.onSubmitFormHandler}>
+              Search
+            </button>
           </div>
         </form>
-
-        {/* <h3 id="result-list">Margarita</h3> */}
         {renderResults}
       </>
     );
