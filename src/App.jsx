@@ -18,7 +18,7 @@ class App extends Component {
     if (response.status === 200) {
       debugger
       this.setState({
-        results: response.data
+        results: response.data.drinks
       });
     } else {
       debugger
@@ -33,16 +33,17 @@ class App extends Component {
     let renderResults;
     if (
       Array.isArray(this.state.results) &&
-      this.state.results !== []
+      this.state.results.length > 0
     )
      {
       debugger
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
+            debugger
             return (
-              <div key={item.results.idDrink}>
-                {item.results.strDrink}{item.results.strCategory} {item.results.strIBA}
+              <div key={item.idDrink}>
+                {item.strDrink}{item.name}{item.strCategory} {item.strIBA}
               </div>
             );
           })}
