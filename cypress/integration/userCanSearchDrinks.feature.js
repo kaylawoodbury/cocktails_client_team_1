@@ -3,16 +3,10 @@ describe("User can search", () => {
     cy.server();
     cy.visit("http://localhost:3001");
   });
-  it("search field exists", () => {
-    cy.get("#name-search.prompt").should("exist");
-    cy.get("#search").should("exist");
-    cy.get("#search").contains("Search");
-  });
   it("successfully by drink name", () => {
     cy.route({
       method: "POST",
-      // url: "http://localhost:3000/api/v1/cocktails",
-      url: "https://cocktails-api-team1.herokuapp.com/api/v1/cocktails", //need to update later
+      url: "https://cocktails-api-team1.herokuapp.com/api/v1/cocktails",
       response: "fixture:margarita_drink_search.json"
     });
     cy.get("#name-search.prompt").type("Margarita");
@@ -25,9 +19,8 @@ describe("User can search", () => {
   it("unsuccessfully by drink name", () => {
     cy.route({
       method: "POST",
-      // url: "http://localhost:3000/api/v1/cocktails",
-      url: "https://cocktails-api-team1.herokuapp.com/api/v1/cocktails", //need to update later
-      response: { status: 400, message: ["No drinks were found"] }
+      url: "https://cocktails-api-team1.herokuapp.com/api/v1/cocktails",
+      response: { status: 400, message: "No drinks were found" }
     });
     cy.get("#name-search.prompt").type("nnjthdlsndfie");
     cy.get("button")

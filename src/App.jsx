@@ -10,18 +10,18 @@ class App extends Component {
 
   onSubmitFormHandler = async e => {
     e.preventDefault();
+    debugger
     let response = await axios.post(
-      "https://cocktails-api-team1.herokuapp.com/api/v1/cocktails",
+      "https:localhost:3000/api/v1/cocktails",
       {
         params: {
-          query: "name"
+          query: e.target.query.value
         }
       }
     );
     if (response.data.status === 400) {
       this.setState({
         message: response.data.message,
-        results: null
       });
     } else {
       this.setState({
@@ -52,16 +52,16 @@ class App extends Component {
 
     return (
       <>
-        <form id="search-by-name">
+        <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
           <div className="ui search">
             <input
-              name="search-by-name"
+              name="query"
               type="text"
               id="name-search"
               className="prompt"
               placeholder="Search by drink name"
             ></input>
-            <button id="search" onClick={this.onSubmitFormHandler}>
+            <button id="search" type="submit" >
               Search
             </button>
           </div>
