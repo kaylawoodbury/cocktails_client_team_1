@@ -10,7 +10,7 @@ class App extends Component {
 
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.post("http://localhost:3000/api/v1/cocktails", {
+    let response = await axios.post("https://cocktails-api-team1.herokuapp.com/api/v1/cocktails", {
       params: {
         query: "name"
       }
