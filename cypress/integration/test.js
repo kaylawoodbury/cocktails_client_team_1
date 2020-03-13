@@ -1,6 +1,5 @@
 describe("user views menus", () => {
-    it('', () => {
-      cy.visit("http://localhost:3000");
-
-    });
+  it("", () => {
+    cy.visit("http://localhost:3000");
   });
+});
