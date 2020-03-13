@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchBar from "./components/SearchBar";
-import {searchByDrinkName} from "./modules/Test";
+import axios from "axios";
+//import {searchByDrinkName} from "./modules/Test";
 
 
 class Testing extends Component {
@@ -12,20 +13,22 @@ class Testing extends Component {
 
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await searchByDrinkName(
-       e.target.query.value
-    );
-    if (response.status === 200) {
-      this.setState({
-        drinks: response.data.drinks
-      });
-    }
-    else {
-      this.setState({
-        drink_not_found: "No drinks found"
-      })
-    }
-  };
+    let response = await axios.post(
+      "http://localhost:3000/api/v1/cocktails", {
+      params: {
+        //query: query
+      }
+    //if (response.status === 200) {
+      //this.setState({
+        //drinks: response.data.drinks
+      //});
+    //}
+    //else {
+      //this.setState({
+        //drink_not_found: "No drinks found"
+      //})
+    //}
+    })}
 
   render() {
     const {
