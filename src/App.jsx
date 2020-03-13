@@ -10,19 +10,20 @@ class App extends Component {
 
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.post("https://cocktails-api-team1.herokuapp.com/api/v1/cocktails", {
-      params: {
-        query: "name"
+    let response = await axios.post(
+      "https://cocktails-api-team1.herokuapp.com/api/v1/cocktails",
+      {
+        params: {
+          query: "name"
+        }
       }
-    });
+    );
     if (response.data.status === 400) {
-      debugger;
       this.setState({
         message: response.data.message,
         results: null
       });
     } else {
-      debugger;
       this.setState({
         results: response.data.drinks
       });
@@ -32,11 +33,9 @@ class App extends Component {
   render() {
     let renderResults;
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
-      debugger;
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
-            debugger;
             return (
               <div key={item.idDrink}>
                 {item.strDrink}
