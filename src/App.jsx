@@ -77,9 +77,16 @@ class App extends Component {
               <div key={item.id}>
                 {item.name}
                 {item.category}
-                {item.glass}
-                {[item.ingredients]}
-                {item.instructions}
+                <img src={item.image}/> <br/>
+                Glass: {item.glass}
+                Ingredients: {item.ingredients.map(content => {
+                  return (
+                    <div key={item.id}>
+                    {content.name} {content.measure}
+                    </div>
+                  )
+                })}
+                Instruction: {item.instructions}
               </div>
             );
           })}

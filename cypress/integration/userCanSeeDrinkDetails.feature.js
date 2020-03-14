@@ -27,7 +27,7 @@ describe("User can see", () => {
     //   );
     cy.get("#details").should("contain", "Ice");
     cy.get("#details").should("contain", "Tequila");
-    cy.get("#details").should("contain", "Lime Juice");
+    cy.get("#details").should("contain", "Lime juice");
     cy.get("#details").should("contain", "Cream of coconut");
     cy.get("#details").should("contain", "2 oz");
     cy.get("#details").should("contain", "Place all ingredients in a blender");
