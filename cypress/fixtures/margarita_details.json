@@ -1,5 +1,5 @@
 {
-  "drink": [
+  "drink": 
     {
       "id": "11007",
       "name": "Margarita",
@@ -15,5 +15,4 @@
         { "name": "Salt", "measure": null }
       ]
     }
-  ]
 }
