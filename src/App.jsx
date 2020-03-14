@@ -50,7 +50,7 @@ class App extends Component {
     return (
       <>
         <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
-          <div className="ui search">
+          <div className="ui input focus">
             <input
               name="query"
               type="text"
@@ -58,9 +58,11 @@ class App extends Component {
               className="prompt"
               placeholder="Search by drink name"
             ></input>
-            <button id="search" type="submit" >
+            <div>
+            <button id="search" type="submit" className="ui inverted red button" >
               Search
             </button>
+            </div>
           </div>
         </form>
         {renderResults}

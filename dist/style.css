@@ -1,0 +1,8 @@
+body { 
+  background-image: url("images/cocktailsbg.jpg");
+  background-color: green;
+}
+
+#search-by-name {
+  margin-top: 200px;
+}
