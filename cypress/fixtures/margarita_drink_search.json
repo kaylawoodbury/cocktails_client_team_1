@@ -1,28 +1,28 @@
 {
   "drinks": [
     {
-      "idDrink": "11007",
-      "strDrink": "Margarita",
-      "strCategory": "Ordinary Drink",
-      "strIBA": "Contemporary Classics"
+      "id": "11007",
+      "name": "Margarita",
+      "category": "Ordinary Drink",
+      "IBA": "Contemporary Classics"
     },
     {
-      "idDrink": "11118",
-      "strDrink": "Blue Margarita",
-      "strCategory": "Ordinary Drink",
-      "strIBA": null
+      "id": "11118",
+      "name": "Blue Margarita",
+      "category": "Ordinary Drink",
+      "IBA": null
     },
     {
-      "idDrink": "16158",
-      "strDrink": "Whitecap Margarita",
-      "strCategory": "Other/Unknown",
-      "strIBA": null
+      "id": "16158",
+      "name": "Whitecap Margarita",
+      "category": "Other/Unknown",
+      "IBA": null
     },
     {
-      "idDrink": "12322",
-      "strDrink": "Strawberry Margarita",
-      "strCategory": "Ordinary Drink",
-      "strIBA": null
+      "id": "12322",
+      "name": "Strawberry Margarita",
+      "category": "Ordinary Drink",
+      "IBA": null
     }
   ]
 }

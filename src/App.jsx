@@ -10,14 +10,14 @@ class App extends Component {
 
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.get("/cocktails",
+    let response = await axios.post("/cocktails",
       {
         params: {
           q: e.target.query.value
         }
       }
     );
-    if (response.data.status === 400) {
+    if (response.status === 400) {
       this.setState({
         message: response.data.message,
       });
@@ -31,13 +31,14 @@ class App extends Component {
   render() {
     let renderResults;
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
+      debugger
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
             return (
-              <div key={item.idDrink}>
+              <div key={item.id}>
                 <h4>{item.name}</h4>
-                {item.Category} {item.IBA}
+                {item.category} {item.IBA}
               </div>
             );
           })}
