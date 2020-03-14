@@ -6,7 +6,6 @@ class App extends Component {
     results: [],
     message: "",
     details: [],
-    details_error_message: "",
     ingredients: []
   };
   onSubmitFormHandler = async e => {

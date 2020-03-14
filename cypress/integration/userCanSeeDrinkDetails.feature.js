@@ -15,16 +15,10 @@ describe("User can see", () => {
   it("drink details successfully", () => {
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v1/cocktails/**",
+      url: "**/cocktails/**",
       response: "fixture:margarita_details.json"
     });
     cy.get("#details-button").click();
-    // cy.get("#details")
-    //   .invoke("attr", "src")
-    //   .should(
-    //     "include",
-    //     "https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg"
-    //   );
     cy.get("#details").should("contain", "Salt");
     cy.get("#details").should("contain", "Tequila");
     cy.get("#details").should("contain", "Lime juice");
