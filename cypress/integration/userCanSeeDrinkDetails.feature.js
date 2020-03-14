@@ -5,7 +5,7 @@ describe("User can see", () => {
     cy.route({
       method: "POST",
       url: "**/cocktails",
-      response: "fixture:margarita_details.json"
+      response: "fixture:margarita_drink_search.json"
     });
     cy.get("#name-search.prompt").type("Margarita");
     cy.get("button")
@@ -13,6 +13,11 @@ describe("User can see", () => {
       .click();
   });
   it("drink details successfully", () => {
+    cy.route({
+      method: "GET",
+      url: "**/cocktails",
+      response: "fixture:margarita_details.json"
+    });
     cy.get("#details-button").click();
     cy.get("#details")
       .invoke("attr", "src")

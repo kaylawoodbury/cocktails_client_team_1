@@ -1,0 +1,28 @@
+{
+  "drinks": [
+    {
+      "id": "11007",
+      "name": "Margarita",
+      "category": "Ordinary Drink",
+      "IBA": "Contemporary Classics"
+    },
+    {
+      "id": "11118",
+      "name": "Blue Margarita",
+      "category": "Ordinary Drink",
+      "IBA": null
+    },
+    {
+      "id": "16158",
+      "name": "Whitecap Margarita",
+      "category": "Other/Unknown",
+      "IBA": null
+    },
+    {
+      "id": "12322",
+      "name": "Strawberry Margarita",
+      "category": "Ordinary Drink",
+      "IBA": null
+    }
+  ]
+}

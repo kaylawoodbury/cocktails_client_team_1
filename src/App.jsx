@@ -28,18 +28,21 @@ class App extends Component {
 
   onClickHandler = async e => {
     e.preventDefault();
+    debugger
     let details = await axios.get("/cocktails", {
       params: {
-        q: key
+        q: e.target.query.value
       }
     });
-    if (response.status === 200) {
+    debugger
+    if (details.status === 200) {
       this.setState({
-        details: response.data.drinks
+        details: details.data.drinks
       });
+      debugger
     } else {
       this.setState({
-        details_error_message: response.data.message
+        details_error_message: details.data.message
       })
     }
   }
@@ -48,6 +51,7 @@ class App extends Component {
   render() {
     let renderResults
       , renderDetails;
+
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
         <div id="result-list">
@@ -70,12 +74,14 @@ class App extends Component {
       renderDetails = (
         <div id="details">
           {this.state.details.map(item => {
+            debugger
             return (
               <div key={item.id}>
                 {item.name}
                 {item.category}
-                {item.ingredients}
                 {item.glass}
+                {item.ingredients}
+                {item.instructions}
               </div> 
             )
           })}
@@ -99,6 +105,7 @@ class App extends Component {
           </div>
         </form>
         {renderResults}
+        {renderDetails}
       </>
     );
   }
