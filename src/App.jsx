@@ -31,7 +31,6 @@ class App extends Component {
   render() {
     let renderResults;
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
-      debugger
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
