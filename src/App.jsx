@@ -4,7 +4,9 @@ class App extends Component {
   state = {
     query: "",
     results: [],
-    message: ""
+    message: "",
+    details: [],
+    details_error_message: ""
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
@@ -23,8 +25,29 @@ class App extends Component {
       });
     }
   };
+
+  onClickHandler = async e => {
+    e.preventDefault();
+    let details = await axios.get("/cocktails", {
+      params: {
+        q: key
+      }
+    });
+    if (response.status === 200) {
+      this.setState({
+        details: response.data.drinks
+      });
+    } else {
+      this.setState({
+        details_error_message: response.data.message
+      })
+    }
+  }
+
+
   render() {
-    let renderResults;
+    let renderResults
+      , renderDetails;
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
         <div id="result-list">
@@ -32,7 +55,7 @@ class App extends Component {
             return (
               <div key={item.id}>
                 <h4>{item.name}</h4>
-                <button id="details-button">Details</button>
+                <button id="details-button" onClick={this.onClickHandler} key={item.id}>Details</button>
                 {item.category} {item.IBA}
               </div>
             );
@@ -41,6 +64,23 @@ class App extends Component {
       );
     } else {
       renderResults = <div id="message">{this.state.message}</div>;
+    }
+
+    if (Array.isArray(this.state.details) && this.state.details.length > 0) {
+      renderDetails = (
+        <div id="details">
+          {this.state.details.map(item => {
+            return (
+              <div key={item.id}>
+                {item.name}
+                {item.category}
+                {item.ingredients}
+                {item.glass}
+              </div> 
+            )
+          })}
+        </div>
+      )
     }
     return (
       <>
