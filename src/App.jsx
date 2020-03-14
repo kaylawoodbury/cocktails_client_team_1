@@ -46,8 +46,7 @@ class App extends Component {
         <div id="result-list">
           {this.state.results.map(item => {
             return (
-              <div key={item.id} data-id={item.id}>
-                <br />
+              <>
                 <div id="drink-name" key={item.id} data-id={item.id}>{item.name}
                   <button
                     id="details-button"
@@ -56,8 +55,8 @@ class App extends Component {
                   >
                     Details
                 </button></div>
-                {item.category} {item.IBA} <br />
-              </div>
+                <div id="category">{item.category} {item.IBA}</div>
+              </>
             );
           })}
         </div>
@@ -73,8 +72,8 @@ class App extends Component {
             return (
               <div key={item.id}>
                 <h4>{item.name}</h4>
-                <img src={item.image} /> <br />
-                Glass: {item.glass} <br />
+                <img src={item.image} /> <br/>
+                Glass: {item.glass} <br/>
                 Ingredients: {item.ingredients.map(content => {
                   return (
                     <div key={item.id}>
