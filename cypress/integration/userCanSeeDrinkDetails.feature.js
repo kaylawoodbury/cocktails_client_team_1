@@ -23,14 +23,13 @@ describe("User can see", () => {
     //   .invoke("attr", "src")
     //   .should(
     //     "include",
-    //     "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg"
+    //     "https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg"
     //   );
-    cy.get("#details").should("contain", "Ice");
+    cy.get("#details").should("contain", "Salt");
     cy.get("#details").should("contain", "Tequila");
     cy.get("#details").should("contain", "Lime juice");
-    cy.get("#details").should("contain", "Cream of coconut");
-    cy.get("#details").should("contain", "2 oz");
-    cy.get("#details").should("contain", "Place all ingredients in a blender");
-    cy.get("#details").should("contain", "Margarita/Coupette glass");
+    cy.get("#details").should("contain", "1 1/2 oz");
+    cy.get("#details").should("contain", "Rub the rim");
+    cy.get("#details").should("contain", "Cocktail glass");
   });
 });

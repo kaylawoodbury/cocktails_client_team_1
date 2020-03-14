@@ -1,18 +1,18 @@
 {
   "drink": [
     {
-      "id": "16158",
-      "name": "Whitecap Margarita",
-      "category": "Other/Unknown",
-      "IBA": null,
-      "glass": "Margarita/Coupette glass",
-      "instructions": "Place all ingredients in a blender and blend until smooth. This makes one drink.",
-      "image": "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
+      "id": "11007",
+      "name": "Margarita",
+      "category": "Ordinary Drink",
+      "IBA": "Contemporary Classics",
+      "glass": "Cocktail glass",
+      "instructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+      "image": "https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg",
       "ingredients": [
-        { "name": "Ice", "measure": "1 cup" },
-        { "name": "Tequila", "measure": "2 oz" },
-        { "name": "Cream of coconut", "measure": "1/4 cup" },
-        { "name": "Lime juice", "measure": "3 tblsp fresh" }
+        { "name": "Tequila", "measure": "1 1/2 oz" },
+        { "name": "Triple sec", "measure": "1/2 oz" },
+        { "name": "Lime juice", "measure": "1 oz" },
+        { "name": "Salt", "measure": null }
       ]
     }
   ]

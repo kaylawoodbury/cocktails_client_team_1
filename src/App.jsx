@@ -33,7 +33,6 @@ class App extends Component {
     if (id > 0) {
       details = await axios.get(`/cocktails/${id}`);
     }
-    debugger
     this.setState({
       ingredients: details.data.drink.ingredients,
       details: details.data.drink
@@ -49,15 +48,16 @@ class App extends Component {
           {this.state.results.map(item => {
             return (
               <div key={item.id} data-id={item.id}>
-                <h4>{item.name}</h4>
-                <button
-                  id="details-button"
-                  onClick={this.seeDetails.bind(this)}
-                  key={item.id}
-                >
-                  Details
-                </button>
-                {item.category} {item.IBA}
+                <br />
+                <div id="drink-name" key={item.id} data-id={item.id}>{item.name}
+                  <button
+                    id="details-button"
+                    onClick={this.seeDetails.bind(this)}
+                    key={item.id}
+                  >
+                    Details
+                </button></div>
+                {item.category} {item.IBA} <br />
               </div>
             );
           })}
@@ -67,22 +67,19 @@ class App extends Component {
       renderResults = <div id="message">{this.state.message}</div>;
     }
     if (Array.isArray(this.state.details) && this.state.details.length > 0) {
-      debugger
 
       renderDetails = (
         <div id="details">
           {this.state.details.map(item => {
-            debugger;
             return (
               <div key={item.id}>
-                {item.name}
-                {item.category}
-                <img src={item.image}/> <br/>
-                Glass: {item.glass}
+                <h4>{item.name}</h4>
+                <img src={item.image} /> <br />
+                Glass: {item.glass} <br />
                 Ingredients: {item.ingredients.map(content => {
                   return (
                     <div key={item.id}>
-                    {content.name} {content.measure}
+                      {content.name} {content.measure}
                     </div>
                   )
                 })}
@@ -109,8 +106,8 @@ class App extends Component {
             </button>
           </div>
         </form>
-        {renderResults}
         {renderDetails}
+        {renderResults}
       </>
     );
   }
