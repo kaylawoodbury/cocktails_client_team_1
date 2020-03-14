@@ -1,0 +1,19 @@
+{
+  "drinks": [
+    {
+      "id": "16158",
+      "name": "Whitecap Margarita",
+      "category": "Other/Unknown",
+      "IBA": null,
+      "glass": "Margarita/Coupette glass",
+      "instructions": "Place all ingredients in a blender and blend until smooth. This makes one drink.",
+      "image": "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
+      "ingredients": [
+        { "name": "Ice", "measure": "1 cup" },
+        { "name": "Tequila", "measure": "2 oz" },
+        { "name": "Cream of coconut", "measure": "1/4 cup" },
+        { "name": "Lime juice", "measure": "3 tblsp fresh" }
+      ]
+    }
+  ]
+}
