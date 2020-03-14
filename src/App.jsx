@@ -6,7 +6,8 @@ class App extends Component {
     results: [],
     message: "",
     details: [],
-    details_error_message: ""
+    details_error_message: "",
+    ingredients: []
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
@@ -26,40 +27,36 @@ class App extends Component {
     }
   };
 
-  onClickHandler = async e => {
-    e.preventDefault();
-    debugger
-    let details = await axios.get("/cocktails", {
-      params: {
-        q: e.target.query.value
-      }
-    });
-    debugger
-    if (details.status === 200) {
-      this.setState({
-        details: details.data.drinks
-      });
-      debugger
-    } else {
-      this.setState({
-        details_error_message: details.data.message
-      })
+  async seeDetails(event) {
+    let id = event.target.parentElement.dataset.id;
+    let details;
+    if (id > 0) {
+      details = await axios.get(`/cocktails/${id}`);
     }
+    debugger
+    this.setState({
+      ingredients: details.data.drink.ingredients,
+      details: details.data.drink
+    });
   }
 
-
   render() {
-    let renderResults
-      , renderDetails;
+    let renderResults, renderDetails;
 
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
             return (
-              <div key={item.id}>
+              <div key={item.id} data-id={item.id}>
                 <h4>{item.name}</h4>
-                <button id="details-button" onClick={this.onClickHandler} key={item.id}>Details</button>
+                <button
+                  id="details-button"
+                  onClick={this.seeDetails.bind(this)}
+                  key={item.id}
+                >
+                  Details
+                </button>
                 {item.category} {item.IBA}
               </div>
             );
@@ -69,24 +66,25 @@ class App extends Component {
     } else {
       renderResults = <div id="message">{this.state.message}</div>;
     }
-
     if (Array.isArray(this.state.details) && this.state.details.length > 0) {
+      debugger
+
       renderDetails = (
         <div id="details">
           {this.state.details.map(item => {
-            debugger
+            debugger;
             return (
               <div key={item.id}>
                 {item.name}
                 {item.category}
                 {item.glass}
-                {item.ingredients}
+                {[item.ingredients]}
                 {item.instructions}
-              </div> 
-            )
+              </div>
+            );
           })}
         </div>
-      )
+      );
     }
     return (
       <>
