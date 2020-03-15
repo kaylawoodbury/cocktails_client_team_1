@@ -53,7 +53,6 @@ class App extends Component {
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
-            debugger
             return (
               <>
                 <div id="drink-name" key={item.id} data-id={item.id}>
@@ -151,7 +150,6 @@ class App extends Component {
         {renderDetails}
         {renderBoozeOptions}
         {renderResults}
-        
       </>
     );
   }
