@@ -1,0 +1,59 @@
+{
+  "Hits": [
+    {
+      "ProductId": "19354179",
+      "ProductNumber": "4051201",
+      "ProductNameBold": "Don Abraham",
+      "ProductNameThin": null,
+      "Category": "Sprit",
+      "ProducerName": "Tequilas las Americas",
+      "Price": 428.0,
+      "Country": "Mexiko",
+      "Type": "Tequila"
+    },
+    {
+      "ProductId": "18286065",
+      "ProductNumber": "7349301",
+      "ProductNameBold": "Cenote",
+      "ProductNameThin": "Tequila Blanco",
+      "Category": "Sprit",
+      "ProducerName": "Fabrica De Tequilas Finos",
+      "Price": 699.0,
+      "Country": "Mexiko",
+      "Type": "Tequila"
+    },
+    {
+      "ProductId": "18286084",
+      "ProductNumber": "8702201",
+      "ProductNameBold": "Rooster",
+      "ProductNameThin": "Rojo Tequila Reposado",
+      "Category": "Sprit",
+      "ProducerName": "Fabrica De Tequilas Finos",
+      "Price": 399.0,
+      "Country": "Mexiko",
+      "Type": "Tequila"
+    },
+    {
+      "ProductId": "24431895",
+      "ProductNumber": "8208801",
+      "ProductNameBold": "Cenote Tequila",
+      "ProductNameThin": "Cristallino Anejo",
+      "Category": "Sprit",
+      "ProducerName": "Fabrica De Tequilas Finos",
+      "Price": 999.0,
+      "Country": "Mexiko",
+      "Type": "Tequila"
+    },
+    {
+      "ProductId": "363715",
+      "ProductNumber": "50102701",
+      "ProductNameBold": "Reserva del Señor",
+      "ProductNameThin": "Tequila Silver",
+      "Category": "Sprit",
+      "ProducerName": "Tequilas del Señor",
+      "Price": 512.0,
+      "Country": "Mexiko",
+      "Type": "Tequila"
+    }
+  ]
+}
