@@ -10,11 +10,7 @@ class App extends Component {
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.post("/cocktails", {
-      params: {
-        q: e.target.query.value
-      }
-    });
+    let response = await axios.get(`/cocktails/${e.target.query.value}`);
     if (response.status === 400) {
       this.setState({
         message: response.data.message
@@ -57,6 +53,7 @@ class App extends Component {
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
+            debugger
             return (
               <>
                 <div id="drink-name" key={item.id} data-id={item.id}>
