@@ -1,6 +1,6 @@
 #body {
   background-image: url("images/cocktailsbg.jpg");
-  background-color: #cccccc;
+  background-color: #000000;
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,12 +15,84 @@
 }
 
 #drink-name {
-  color: ivory;
-  text-shadow: 2px 2px black;
+  color: lightgrey;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
   margin-left: 10%;
 }
 #measurements {
-  text-shadow: 2px 2px white;
   font-weight: bold;
-  margin-left: 13%;
+  margin-left: 5%;
+  text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255),
+    -1px 1px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
+}
+
+#instructions {
+  line-height: normal;
+  width: 500px;
+  height: 302px;
+  font-size: x-large;
+  margin-left: 50px;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.666);
+}
+
+#drink-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 8px;
+}
+
+#details {
+  background-color: rgba(255, 255, 255, 0.242);
+}
+
+#details-name {
+  color: white;
+  text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
+    -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
+}
+
+#category {
+  color: white;
+  margin-left: 50px;
+}
+#details-button {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 25px;
+  font-size: 7pt;
+  margin-top: 5px;
+}
+#glass-text {
+  font-weight: bolder;
+  font-size: 16pt;
+  margin-left: 8px;
+}
+
+#ingredient-text {
+  font-weight: bolder;
+  font-size: 16pt;
+  margin-left: 6px;
+}
+
+#details-title {
+  font-weight: bolder;
+  font-size: 26pt;
+  margin-left: 10px;
+  text-shadow: -2px -2px 0 rgb(0, 0, 0), 2px -2px 0 rgb(0, 0, 0),
+    -2px 2px 0 rgb(0, 0, 0), 2px 2px 0 rgb(0, 0, 0);
+  color: white;
+}
+
+#ingredient-details {
+  margin-left: 15px;
+  margin-top: 10px;
 }

@@ -71,14 +71,14 @@ class App extends Component {
     if (drinkDetails.id > 0) {
       renderDetails = (
         <div id="details">
-          <h4>{drinkDetails.name}</h4>
-          <img src={drinkDetails.image} /> <br />
-          Glass: {drinkDetails.glass} <br />
-          Ingredients:{" "}
+          <h4 id="details-title">{drinkDetails.name}</h4>
+          <img id="drink-image" src={drinkDetails.image} /> <br />
+          <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
+          <u id="ingredient-text">Ingredients:</u>{" "}
           {drinkDetails.ingredients.map(content => {
             return (
-              <div>
-                <div id="drink-name" key={content.name}>
+              <div id="ingredient-details">
+                <div id="details-name" key={content.name}>
                   {content.name}
                 </div>
                 <div id="measurements">
@@ -87,7 +87,9 @@ class App extends Component {
               </div>
             );
           })}
-          Instruction: {drinkDetails.instructions}
+          <div id="instructions">
+          <u>Instructions:</u> {drinkDetails.instructions}
+          </div>
         </div>
       );
     }
