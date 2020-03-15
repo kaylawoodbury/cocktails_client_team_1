@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 class App extends Component {
   state = {
     query: "",
     results: [],
-    message: ""
+    message: "",
+    details: {},
   };
-
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.post("/cocktails",
-      {
-        params: {
-          q: e.target.query.value
-        }
+    let response = await axios.post("/cocktails", {
+      params: {
+        q: e.target.query.value
       }
-    );
+    });
     if (response.status === 400) {
       this.setState({
-        message: response.data.message,
+        message: response.data.message
       });
     } else {
       this.setState({
@@ -28,23 +25,60 @@ class App extends Component {
     }
   };
 
+  async seeDetails(event) {
+    let id = event.target.parentElement.dataset.id;
+    let details;
+    if (id > 0) {
+      details = await axios.get(`/cocktails/${id}`);
+    }
+    this.setState({
+      details: details.data.drink
+    });
+  }
+
   render() {
-    let renderResults;
+    let renderResults, renderDetails;
+    let drinkDetails = this.state.details
+
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
         <div id="result-list">
           {this.state.results.map(item => {
             return (
-              <div key={item.id}>
-                <h4>{item.name}</h4>
-                {item.category} {item.IBA}
-              </div>
+              <>
+                <div id="drink-name" key={item.id} data-id={item.id}>{item.name}
+                  <button
+                    id="details-button"
+                    onClick={this.seeDetails.bind(this)}
+                    key={item.id}
+                  >
+                    Details
+                </button></div>
+                <div id="category">{item.category} {item.IBA}</div>
+              </>
             );
           })}
         </div>
       );
     } else {
       renderResults = <div id="message">{this.state.message}</div>;
+    }
+    if (drinkDetails.id > 0) {
+      renderDetails = (
+        <div id="details">
+          <h4>{drinkDetails.name}</h4>
+          <img src={drinkDetails.image} /> <br />
+          Glass: {drinkDetails.glass} <br />
+          Ingredients: {drinkDetails.ingredients.map(content => {
+            return (
+              <div key={content.name}>
+                {content.name} {content.measure}
+              </div>
+            )
+          })}
+          Instruction: {drinkDetails.instructions}
+        </div>
+      );
     }
 
     return (
@@ -58,15 +92,15 @@ class App extends Component {
               className="prompt"
               placeholder="Search by drink name"
             ></input>
-            <button id="search" type="submit" >
+            <button id="search" type="submit">
               Search
             </button>
           </div>
         </form>
+        {renderDetails}
         {renderResults}
       </>
     );
   }
 }
-
 export default App;
