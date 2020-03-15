@@ -25,14 +25,14 @@ describe("User can find", () => {
       url: "**/cocktails/**",
       response: "fixture:tequila_list.json"
     });
-    cy.get("#find-button").click();
-    cy.get("#name").should("contain", "Cenote");
-    cy.get("#name2").should("contain", "Tequila Blanco");
-    cy.get("#category").should("contain", "Sprit");
-    cy.get("#producer").should("contain", "Fabrica De Tequilas Finos");
-    cy.get("#price").should("contain", "699.0");
-    cy.get("#country").should("contain", "Mexiko");
-    cy.get("#name").should("contain", "Cenote Tequila");
-    cy.get("#name").should("contain", "Reserva Del Señor");
+    cy.get("#booze-button").click();
+    cy.get("#booze-options").should("contain", "Cenote");
+    cy.get("#booze-options").should("contain", "Tequila Blanco");
+    cy.get("#booze-options").should("contain", "Sprit");
+    cy.get("#booze-options").should("contain", "Fabrica De Tequilas Finos");
+    cy.get("#booze-options").should("contain", "699");
+    cy.get("#booze-options").should("contain", "Mexiko");
+    cy.get("#booze-options").should("contain", "Cenote Tequila");
+    cy.get("#booze-options").should("contain", "Reserva del Señor");
   });
 });

@@ -6,6 +6,7 @@ class App extends Component {
     results: [],
     message: "",
     details: {},
+    boozeResults: []
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
@@ -36,9 +37,21 @@ class App extends Component {
     });
   }
 
+  async seeBoozeList(event) {
+    let boozeType = event._targetInst.key;
+    let booze;
+
+    if (boozeType !== null) {
+      booze = await axios.get(`/cocktails/${boozeType}`);
+    }
+    this.setState({
+      boozeResults: booze.data.options
+    });
+  }
+
   render() {
-    let renderResults, renderDetails;
-    let drinkDetails = this.state.details
+    let renderResults, renderDetails, renderBoozeOptions;
+    let drinkDetails = this.state.details;
 
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
@@ -46,15 +59,19 @@ class App extends Component {
           {this.state.results.map(item => {
             return (
               <>
-                <div id="drink-name" key={item.id} data-id={item.id}>{item.name}
+                <div id="drink-name" key={item.id} data-id={item.id}>
+                  {item.name}
                   <button
                     id="details-button"
                     onClick={this.seeDetails.bind(this)}
                     key={item.id}
                   >
                     Details
-                </button></div>
-                <div id="category">{item.category} {item.IBA}</div>
+                  </button>
+                </div>
+                <div id="category">
+                  {item.category} {item.IBA}
+                </div>
               </>
             );
           })}
@@ -69,14 +86,44 @@ class App extends Component {
           <h4>{drinkDetails.name}</h4>
           <img src={drinkDetails.image} /> <br />
           Glass: {drinkDetails.glass} <br />
-          Ingredients: {drinkDetails.ingredients.map(content => {
+          Ingredients:{" "}
+          {drinkDetails.ingredients.map(content => {
             return (
               <div key={content.name}>
                 {content.name} {content.measure}
+                <button
+                  id="booze-button"
+                  onClick={this.seeBoozeList.bind(this)}
+                  key={content.name}
+                >
+                  Show Me The Booze!
+                </button>
               </div>
-            )
+            );
           })}
           Instruction: {drinkDetails.instructions}
+        </div>
+      );
+    }
+    if (
+      Array.isArray(this.state.boozeResults) &&
+      this.state.boozeResults.length > 0
+    ) {
+      renderBoozeOptions = (
+        <div id="booze-options">
+          {this.state.boozeResults.map(booze => {
+            return (
+              <div>
+                {booze.name}
+                {booze.name2}
+                {booze.producer}
+                {booze.category}
+                {booze.type}
+                {booze.price}
+                {booze.country}
+              </div>
+            );
+          })}
         </div>
       );
     }
@@ -99,6 +146,7 @@ class App extends Component {
         </form>
         {renderDetails}
         {renderResults}
+        {renderBoozeOptions}
       </>
     );
   }
