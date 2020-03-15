@@ -114,23 +114,27 @@ class App extends Component {
           {this.state.boozeResults.map(booze => {
             return (
               <div>
-                {booze.name}
-                {booze.name2}
-                {booze.producer}
-                {booze.category}
-                {booze.type}
-                {booze.price}
-                {booze.country}
+                <div id="title">
+                  {booze.name}
+                  {booze.name2}
+                </div>
+                <div>
+                  {booze.producer}
+                  {booze.category}
+                  {booze.type}
+                  {booze.country}
+                </div>
+                {booze.price} SEK
               </div>
             );
           })}
         </div>
       );
+    } else {
+      renderBoozeOptions = (
+        <div>This item is not available at System Bolaget</div>
+      );
     }
-   else {
-    renderBoozeOptions = <div>This item is not available at System Bolaget</div>
-   };
-
 
     return (
       <>
