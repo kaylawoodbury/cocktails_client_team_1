@@ -5,8 +5,9 @@ class App extends Component {
     query: "",
     results: [],
     message: "",
-    details: [],
-    ingredients: []
+    details: {},
+    ingredients: [],
+    id: null
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
@@ -34,7 +35,8 @@ class App extends Component {
     }
     this.setState({
       ingredients: details.data.drink.ingredients,
-      details: details.data.drink
+      details: details.data.drink,
+      id: details.data.drink.id
     });
   }
 
@@ -64,30 +66,24 @@ class App extends Component {
     } else {
       renderResults = <div id="message">{this.state.message}</div>;
     }
-    if (Array.isArray(this.state.details) && this.state.details.length > 0) {
-
+    if (this.state.id > 0) {
       renderDetails = (
         <div id="details">
-          {this.state.details.map(item => {
+          <h4>{this.state.details.name}</h4>
+          <img src={this.state.details.image} /> <br />
+          Glass: {this.state.details.glass} <br />
+          Ingredients: {this.state.details.ingredients.map(content => {
             return (
-              <div key={item.id}>
-                <h4>{item.name}</h4>
-                <img src={item.image} /> <br/>
-                Glass: {item.glass} <br/>
-                Ingredients: {item.ingredients.map(content => {
-                  return (
-                    <div key={item.id}>
-                      {content.name} {content.measure}
-                    </div>
-                  )
-                })}
-                Instruction: {item.instructions}
+              <div key={this.state.details.id}>
+                {content.name} {content.measure}
               </div>
-            );
+            )
           })}
+          Instruction: {this.state.details.instructions}
         </div>
       );
     }
+
     return (
       <>
         <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
