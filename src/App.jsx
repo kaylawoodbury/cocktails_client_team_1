@@ -125,8 +125,8 @@ class App extends Component {
                   {booze.type}
                   {booze.country}
                 </div>
-                {booze.price} SEK
-                {booze.volume}
+                <div>{booze.price} SEK</div>
+                <div>{booze.volume}ml</div>
               </div>
             );
           })}
