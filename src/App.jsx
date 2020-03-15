@@ -5,7 +5,7 @@ class App extends Component {
     query: "",
     results: [],
     message: "",
-    details: {},
+    details: {}
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
@@ -38,7 +38,7 @@ class App extends Component {
 
   render() {
     let renderResults, renderDetails;
-    let drinkDetails = this.state.details
+    let drinkDetails = this.state.details;
 
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
@@ -46,15 +46,20 @@ class App extends Component {
           {this.state.results.map(item => {
             return (
               <>
-                <div id="drink-name" key={item.id} data-id={item.id}>{item.name}
+                <div id="drink-name" key={item.id} data-id={item.id}>
+                  {item.name}
                   <button
+                    className="ui red basic button"
                     id="details-button"
                     onClick={this.seeDetails.bind(this)}
                     key={item.id}
                   >
                     Details
-                </button></div>
-                <div id="category">{item.category} {item.IBA}</div>
+                  </button>
+                </div>
+                <div id="category">
+                  {item.category} {item.IBA}
+                </div>
               </>
             );
           })}
@@ -69,12 +74,13 @@ class App extends Component {
           <h4>{drinkDetails.name}</h4>
           <img src={drinkDetails.image} /> <br />
           Glass: {drinkDetails.glass} <br />
-          Ingredients: {drinkDetails.ingredients.map(content => {
+          Ingredients:{" "}
+          {drinkDetails.ingredients.map(content => {
             return (
               <div key={content.name}>
                 {content.name} {content.measure}
               </div>
-            )
+            );
           })}
           Instruction: {drinkDetails.instructions}
         </div>
@@ -93,9 +99,13 @@ class App extends Component {
               placeholder="Search by drink name"
             ></input>
             <div>
-            <button id="search" type="submit" className="ui inverted red button" >
-              Search
-            </button>
+              <button
+                id="search"
+                type="submit"
+                className="ui inverted red button"
+              >
+                Search
+              </button>
             </div>
           </div>
         </form>
