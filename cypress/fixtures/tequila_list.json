@@ -9,7 +9,10 @@
       "producer": "Tequilas las Americas",
       "price": 428.0,
       "country": "Mexiko",
-      "type": "Tequila"
+      "type": "Tequila",
+      "volume":
+      "image":
+
     },
     {
       "id": "18286065",
@@ -20,7 +23,11 @@
       "producer": "Fabrica De Tequilas Finos",
       "price": 699.0,
       "country": "Mexiko",
-      "type": "Tequila"
+      "type": "Tequila",
+      "volume":
+      "image":
+
+
     },
     {
       "id": "18286084",
@@ -31,7 +38,11 @@
       "producer": "Fabrica De Tequilas Finos",
       "price": 399.0,
       "country": "Mexiko",
-      "type": "Tequila"
+      "type": "Tequila",
+      "volume":"",
+      "image":""
+
+
     },
     {
       "id": "24431895",
@@ -42,7 +53,11 @@
       "producer": "Fabrica De Tequilas Finos",
       "price": 999.0,
       "country": "Mexiko",
-      "type": "Tequila"
+      "type": "Tequila",
+      "volume":"",
+      "image":
+
+
     },
     {
       "id": "363715",
@@ -53,7 +68,11 @@
       "producer": "Tequilas del Señor",
       "price": 512.0,
       "country": "Mexiko",
-      "type": "Tequila"
+      "type": "Tequila",
+      "volume":"",
+      "image":""
+
+
     }
   ]
 }
