@@ -4,7 +4,7 @@ describe("User can find", () => {
     cy.visit("http://localhost:3001");
     cy.route({
       method: "GET",
-      url: "**/cocktails",
+      url: "**/cocktails/**",
       response: "fixture:margarita_drink_search.json"
     });
     cy.get("#name-search.prompt").type("Margarita");
