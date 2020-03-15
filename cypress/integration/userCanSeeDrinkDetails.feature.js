@@ -18,6 +18,7 @@ describe("User can see", () => {
       url: "**/cocktails/**",
       response: "fixture:margarita_details.json"
     });
+    debugger
     cy.get("#details-button").click();
     cy.get("#details").should("contain", "Salt");
     cy.get("#details").should("contain", "Tequila");

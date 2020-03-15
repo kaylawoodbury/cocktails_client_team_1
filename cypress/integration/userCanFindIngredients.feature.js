@@ -3,7 +3,7 @@ describe("User can find", () => {
     cy.server();
     cy.visit("http://localhost:3001");
     cy.route({
-      method: "POST",
+      method: "GET",
       url: "**/cocktails",
       response: "fixture:margarita_drink_search.json"
     });
