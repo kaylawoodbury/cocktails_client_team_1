@@ -41,7 +41,7 @@ class App extends Component {
       booze = await axios.get(`/cocktails/${boozeType}`);
     }
     this.setState({
-      boozeResults: booze.data.options
+      boozeResults: booze.data.ProductSearchResults
     });
   }
 
@@ -149,8 +149,9 @@ class App extends Component {
           </div>
         </form>
         {renderDetails}
-        {renderResults}
         {renderBoozeOptions}
+        {renderResults}
+        
       </>
     );
   }
