@@ -9,7 +9,7 @@ class App extends Component {
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.post("/cocktails", {
+    let response = await axios.get("/cocktails", {
       params: {
         q: e.target.query.value
       }
