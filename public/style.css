@@ -40,13 +40,14 @@
   color: white;
   text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0),
     -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0);
-  background-color: rgba(255, 255, 255, 0.666);
+  background-color: rgba(0, 0, 0, 0.324);
 }
 
 #drink-image {
   height: 150px;
   width: 150px;
   border-radius: 8px;
+  margin-left: 30px;
 }
 
 #details {
