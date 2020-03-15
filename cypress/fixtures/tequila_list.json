@@ -10,7 +10,7 @@
       "price": 428.0,
       "country": "Mexiko",
       "type": "Tequila",
-      "volume":
+      "volume": 700,
       "image":
 
     },
@@ -24,7 +24,7 @@
       "price": 699.0,
       "country": "Mexiko",
       "type": "Tequila",
-      "volume":
+      "volume": 700,
       "image":
 
 
@@ -39,8 +39,8 @@
       "price": 399.0,
       "country": "Mexiko",
       "type": "Tequila",
-      "volume":"",
-      "image":""
+      "volume": 700,
+      "image": ""
 
 
     },
@@ -54,8 +54,8 @@
       "price": 999.0,
       "country": "Mexiko",
       "type": "Tequila",
-      "volume":"",
-      "image":
+      "volume": 700,
+      "image":""
 
 
     },
@@ -69,7 +69,7 @@
       "price": 512.0,
       "country": "Mexiko",
       "type": "Tequila",
-      "volume":"",
+      "volume": 700,
       "image":""
 
 

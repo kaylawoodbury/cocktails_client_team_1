@@ -114,6 +114,7 @@ class App extends Component {
           {this.state.boozeResults.map(booze => {
             return (
               <div>
+                <div id="booze-image">{booze.image}</div>
                 <div id="title">
                   {booze.name}
                   {booze.name2}
@@ -125,17 +126,15 @@ class App extends Component {
                   {booze.country}
                 </div>
                 {booze.price} SEK
+                {booze.volume}
               </div>
             );
           })}
         </div>
       );
     } else {
-      renderBoozeOptions = (
-        <div>This item is not available at System Bolaget</div>
-      );
+      renderBoozeOptions = <div id="message">{this.state.message}</div>;
     }
-
     return (
       <>
         <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
@@ -145,7 +144,7 @@ class App extends Component {
               type="text"
               id="name-search"
               className="prompt"
-              placeholder="Search by drink name"
+              placeholder="Search by cocktail name"
             ></input>
             <button id="search" type="submit">
               Search
