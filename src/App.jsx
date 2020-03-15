@@ -127,6 +127,10 @@ class App extends Component {
         </div>
       );
     }
+   else {
+    renderBoozeOptions = <div>This item is not available at System Bolaget</div>
+   };
+
 
     return (
       <>
