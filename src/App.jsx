@@ -77,8 +77,13 @@ class App extends Component {
           Ingredients:{" "}
           {drinkDetails.ingredients.map(content => {
             return (
-              <div key={content.name}>
-                {content.name} {content.measure}
+              <div>
+                <div id="drink-name" key={content.name}>
+                  {content.name}
+                </div>
+                <div id="measurements">
+                  {content.measure}
+                </div>
               </div>
             );
           })}
@@ -99,11 +104,7 @@ class App extends Component {
               placeholder="Search by drink name"
             ></input>
             <div>
-              <button
-                id="search"
-                type="submit"
-                className="ui inverted red button"
-              >
+              <button id="search" type="submit" className="ui pink button">
                 Search
               </button>
             </div>

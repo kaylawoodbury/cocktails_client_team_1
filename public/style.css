@@ -1,0 +1,26 @@
+#body {
+  background-image: url("images/cocktailsbg.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.ui.input.focus {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: 150px;
+}
+
+#drink-name {
+  color: ivory;
+  text-shadow: 2px 2px black;
+  margin-left: 10%;
+}
+#measurements {
+  text-shadow: 2px 2px white;
+  font-weight: bold;
+  margin-left: 13%;
+}
