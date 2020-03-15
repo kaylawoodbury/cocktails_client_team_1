@@ -6,8 +6,6 @@ class App extends Component {
     results: [],
     message: "",
     details: {},
-    ingredients: [],
-    id: null
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
@@ -34,14 +32,13 @@ class App extends Component {
       details = await axios.get(`/cocktails/${id}`);
     }
     this.setState({
-      ingredients: details.data.drink.ingredients,
-      details: details.data.drink,
-      id: details.data.drink.id
+      details: details.data.drink
     });
   }
 
   render() {
     let renderResults, renderDetails;
+    let drinkDetails = this.state.details
 
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
@@ -66,20 +63,20 @@ class App extends Component {
     } else {
       renderResults = <div id="message">{this.state.message}</div>;
     }
-    if (this.state.id > 0) {
+    if (drinkDetails.id > 0) {
       renderDetails = (
         <div id="details">
-          <h4>{this.state.details.name}</h4>
-          <img src={this.state.details.image} /> <br />
-          Glass: {this.state.details.glass} <br />
-          Ingredients: {this.state.details.ingredients.map(content => {
+          <h4>{drinkDetails.name}</h4>
+          <img src={drinkDetails.image} /> <br />
+          Glass: {drinkDetails.glass} <br />
+          Ingredients: {drinkDetails.ingredients.map(content => {
             return (
-              <div key={this.state.details.id}>
+              <div key={content.name}>
                 {content.name} {content.measure}
               </div>
             )
           })}
-          Instruction: {this.state.details.instructions}
+          Instruction: {drinkDetails.instructions}
         </div>
       );
     }
