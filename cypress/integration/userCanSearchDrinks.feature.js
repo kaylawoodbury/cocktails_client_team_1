@@ -6,8 +6,11 @@ describe("User can search", () => {
   it("successfully by drink name", () => {
     cy.route({
       method: "GET",
-      url: "**/cocktails/**",
-      response: "fixture:margarita_drink_search.json"
+      url: "**/cocktails",
+      response: "fixture:margarita_drink_search.json",
+      body: {
+        s: "Margarita"
+      }
     });
     cy.get("#name-search.prompt").type("Margarita");
     cy.get("button")
@@ -21,7 +24,10 @@ describe("User can search", () => {
       method: "POST",
       url: "**/cocktails",
       response: { message: "No drinks were found" },
-      status: 400
+      status: 400,
+      body: {
+        s: "Margarita"
+      }
     });
     cy.get("#name-search.prompt").type("nnjthdlsndfie");
     cy.get("button")

@@ -10,11 +10,12 @@ class App extends Component {
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.get(`/cocktails`, {
+    let response = await axios.get('/cocktails', {
       params: {
         s: e.target.query.value
       }
     });
+    debugger
     if (response.status === 400) {
       this.setState({
         message: response.data.message
@@ -85,7 +86,7 @@ class App extends Component {
       renderDetails = (
         <div id="details">
           <h4 id="details-title">{drinkDetails.name}</h4>
-          <img id="drink-image" src={drinkDetails.image} /> <br />
+          <img id="drink-image" src={drinkDetails.image} alt="Drink Image"/> <br />
           <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
           <u id="ingredient-text">Ingredients:</u>{" "}
           {drinkDetails.ingredients.map(content => {
