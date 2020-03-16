@@ -4,8 +4,11 @@ describe("User can see", () => {
     cy.visit("http://localhost:3001");
     cy.route({
       method: "GET",
-      url: "**/cocktails/**",
-      response: "fixture:margarita_drink_search.json"
+      url: "**/cocktails",
+      response: "fixture:margarita_drink_search.json",
+      body: {
+        s: "Margarita"
+      }
     });
     cy.get("#name-search.prompt").type("Margarita");
     cy.get("button")

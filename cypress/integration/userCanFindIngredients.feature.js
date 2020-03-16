@@ -4,8 +4,11 @@ describe("User can find", () => {
     cy.visit("http://localhost:3001");
     cy.route({
       method: "GET",
-      url: "**/cocktails/**",
-      response: "fixture:margarita_drink_search.json"
+      url: "**/cocktails",
+      response: "fixture:margarita_drink_search.json",
+      body: {
+        s: "Margarita"
+      }
     });
     cy.get("#name-search.prompt").type("Margarita");
     cy.get("button")
@@ -28,8 +31,6 @@ describe("User can find", () => {
     cy.get("#booze-button").click();
     cy.get("#booze-options").should("contain", "Cenote");
     cy.get("#booze-options").should("contain", "Tequila Blanco");
-    cy.get("#booze-options").should("contain", "Sprit");
-    cy.get("#booze-options").should("contain", "Fabrica De Tequilas Finos");
     cy.get("#booze-options").should("contain", "699");
     cy.get("#booze-options").should("contain", "Mexiko");
     cy.get("#booze-options").should("contain", "Cenote Tequila");

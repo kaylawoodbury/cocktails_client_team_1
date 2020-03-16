@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 class App extends Component {
   state = {
-    query: "",
+    // query: "",
     results: [],
     message: "",
     details: {},
@@ -10,7 +10,12 @@ class App extends Component {
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.get(`/cocktails/${e.target.query.value}`);
+    let response = await axios.get('/cocktails', {
+      params: {
+        q: e.target.query.value
+      }
+    });
+    debugger
     if (response.status === 400) {
       this.setState({
         message: response.data.message
@@ -58,6 +63,7 @@ class App extends Component {
                 <div id="drink-name" key={item.id} data-id={item.id}>
                   {item.name}
                   <button
+                    className="ui red basic button"
                     id="details-button"
                     onClick={this.seeDetails.bind(this)}
                     key={item.id}
@@ -79,25 +85,32 @@ class App extends Component {
     if (drinkDetails.id > 0) {
       renderDetails = (
         <div id="details">
-          <h4>{drinkDetails.name}</h4>
-          <img src={drinkDetails.image} /> <br />
-          Glass: {drinkDetails.glass} <br />
-          Ingredients:{" "}
+          <h4 id="details-title">{drinkDetails.name}</h4>
+          <img id="drink-image" src={drinkDetails.image} alt="Drink Image"/> <br />
+          <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
+          <u id="ingredient-text">Ingredients:</u>{" "}
           {drinkDetails.ingredients.map(content => {
             return (
-              <div key={content.name}>
-                {content.name} {content.measure}
-                <button
-                  id="booze-button"
-                  onClick={this.seeBoozeList.bind(this)}
-                  key={content.name}
-                >
-                  Show Me The Booze!
+              <div id="ingredient-details">
+                <div id="details-name" key={content.name}>
+                  {content.name}
+                  <button
+                    id="booze-button"
+                    onClick={this.seeBoozeList.bind(this)}
+                    key={content.name}
+                    className="ui pink button"
+                  >
+                    Show Booze!
                 </button>
+                </div>
+                <div id="measurements">{content.measure}
+                </div>
               </div>
             );
           })}
-          Instruction: {drinkDetails.instructions}
+          <div id="instructions">
+            <u>Instructions:</u> {drinkDetails.instructions}
+          </div>
         </div>
       );
     }
@@ -116,13 +129,13 @@ class App extends Component {
                   {booze.name_2}
                 </div>
                 <div>
-                  {booze.producer}
-                  {booze.category}
-                  {booze.type}
+                  {booze.producer} 
+                </div>
+                <div>
                   {booze.country}
                 </div>
                 <div>{booze.price} SEK</div>
-                <div>{booze.volume}ml</div>
+                <div>{booze.volume}ml</div><br/>
               </div>
             );
           })}
@@ -134,7 +147,7 @@ class App extends Component {
     return (
       <>
         <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
-          <div className="ui search">
+          <div className="ui input focus">
             <input
               name="query"
               type="text"
@@ -142,9 +155,11 @@ class App extends Component {
               className="prompt"
               placeholder="Search by cocktail name"
             ></input>
-            <button id="search" type="submit">
-              Search
-            </button>
+            <div>
+              <button id="search" type="submit" className="ui pink button">
+                Search
+              </button>
+            </div>
           </div>
         </form>
         {renderDetails}
