@@ -10,7 +10,11 @@ class App extends Component {
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.get(`/cocktails/${e.target.query.value}`);
+    let response = await axios.get(`/cocktails`, {
+      params: {
+        s: e.target.query.value
+      }
+    });
     if (response.status === 400) {
       this.setState({
         message: response.data.message
