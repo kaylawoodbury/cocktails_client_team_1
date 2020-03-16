@@ -6,14 +6,11 @@ class App extends Component {
     results: [],
     message: "",
     details: {},
+    boozeResults: []
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.post("/cocktails", {
-      params: {
-        q: e.target.query.value
-      }
-    });
+    let response = await axios.get(`/cocktails/${e.target.query.value}`);
     if (response.status === 400) {
       this.setState({
         message: response.data.message
@@ -36,9 +33,21 @@ class App extends Component {
     });
   }
 
+  async seeBoozeList(event) {
+    let boozeType = event._targetInst.key;
+    let booze;
+
+    if (boozeType !== null) {
+      booze = await axios.get(`/products/${boozeType}`);
+    }
+    this.setState({
+      boozeResults: booze.data.results
+    });
+  }
+
   render() {
-    let renderResults, renderDetails;
-    let drinkDetails = this.state.details
+    let renderResults, renderDetails, renderBoozeOptions;
+    let drinkDetails = this.state.details;
 
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
       renderResults = (
@@ -46,15 +55,19 @@ class App extends Component {
           {this.state.results.map(item => {
             return (
               <>
-                <div id="drink-name" key={item.id} data-id={item.id}>{item.name}
+                <div id="drink-name" key={item.id} data-id={item.id}>
+                  {item.name}
                   <button
                     id="details-button"
                     onClick={this.seeDetails.bind(this)}
                     key={item.id}
                   >
                     Details
-                </button></div>
-                <div id="category">{item.category} {item.IBA}</div>
+                  </button>
+                </div>
+                <div id="category">
+                  {item.category} {item.IBA}
+                </div>
               </>
             );
           })}
@@ -69,18 +82,55 @@ class App extends Component {
           <h4>{drinkDetails.name}</h4>
           <img src={drinkDetails.image} /> <br />
           Glass: {drinkDetails.glass} <br />
-          Ingredients: {drinkDetails.ingredients.map(content => {
+          Ingredients:{" "}
+          {drinkDetails.ingredients.map(content => {
             return (
               <div key={content.name}>
                 {content.name} {content.measure}
+                <button
+                  id="booze-button"
+                  onClick={this.seeBoozeList.bind(this)}
+                  key={content.name}
+                >
+                  Show Me The Booze!
+                </button>
               </div>
-            )
+            );
           })}
           Instruction: {drinkDetails.instructions}
         </div>
       );
     }
-
+    if (
+      Array.isArray(this.state.boozeResults) &&
+      this.state.boozeResults.length > 0
+    ) {
+      renderBoozeOptions = (
+        <div id="booze-options">
+          {this.state.boozeResults.map(booze => {
+            return (
+              <div>
+                <div id="booze-image">{booze.image}</div>
+                <div id="title">
+                  {booze.name}
+                  {booze.name_2}
+                </div>
+                <div>
+                  {booze.producer}
+                  {booze.category}
+                  {booze.type}
+                  {booze.country}
+                </div>
+                <div>{booze.price} SEK</div>
+                <div>{booze.volume}ml</div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    } else {
+      renderBoozeOptions = <div id="message">{this.state.message}</div>;
+    }
     return (
       <>
         <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
@@ -90,7 +140,7 @@ class App extends Component {
               type="text"
               id="name-search"
               className="prompt"
-              placeholder="Search by drink name"
+              placeholder="Search by cocktail name"
             ></input>
             <button id="search" type="submit">
               Search
@@ -98,6 +148,7 @@ class App extends Component {
           </div>
         </form>
         {renderDetails}
+        {renderBoozeOptions}
         {renderResults}
       </>
     );

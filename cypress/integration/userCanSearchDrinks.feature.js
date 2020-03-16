@@ -5,8 +5,8 @@ describe("User can search", () => {
   });
   it("successfully by drink name", () => {
     cy.route({
-      method: "POST",
-      url: "**/cocktails",
+      method: "GET",
+      url: "**/cocktails/**",
       response: "fixture:margarita_drink_search.json"
     });
     cy.get("#name-search.prompt").type("Margarita");
