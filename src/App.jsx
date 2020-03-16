@@ -5,15 +5,12 @@ class App extends Component {
     query: "",
     results: [],
     message: "",
-    details: {}
+    details: {},
+    boozeResults: []
   };
   onSubmitFormHandler = async e => {
     e.preventDefault();
-    let response = await axios.get("/cocktails", {
-      params: {
-        q: e.target.query.value
-      }
-    });
+    let response = await axios.get(`/cocktails/${e.target.query.value}`);
     if (response.status === 400) {
       this.setState({
         message: response.data.message
@@ -36,8 +33,20 @@ class App extends Component {
     });
   }
 
+  async seeBoozeList(event) {
+    let boozeType = event._targetInst.key;
+    let booze;
+
+    if (boozeType !== null) {
+      booze = await axios.get(`/products/${boozeType}`);
+    }
+    this.setState({
+      boozeResults: booze.data.results
+    });
+  }
+
   render() {
-    let renderResults, renderDetails;
+    let renderResults, renderDetails, renderBoozeOptions;
     let drinkDetails = this.state.details;
 
     if (Array.isArray(this.state.results) && this.state.results.length > 0) {
@@ -80,20 +89,56 @@ class App extends Component {
               <div id="ingredient-details">
                 <div id="details-name" key={content.name}>
                   {content.name}
+                  <button
+                    id="booze-button"
+                    onClick={this.seeBoozeList.bind(this)}
+                    key={content.name}
+                    className="ui pink button"
+                  >
+                    Show Booze!
+                </button>
                 </div>
-                <div id="measurements">
-                  {content.measure}
+                <div id="measurements">{content.measure}
                 </div>
               </div>
             );
           })}
           <div id="instructions">
-          <u>Instructions:</u> {drinkDetails.instructions}
+            <u>Instructions:</u> {drinkDetails.instructions}
           </div>
         </div>
       );
     }
-
+    if (
+      Array.isArray(this.state.boozeResults) &&
+      this.state.boozeResults.length > 0
+    ) {
+      renderBoozeOptions = (
+        <div id="booze-options">
+          {this.state.boozeResults.map(booze => {
+            return (
+              <div>
+                <div id="booze-image">{booze.image}</div>
+                <div id="title">
+                  {booze.name}
+                  {booze.name_2}
+                </div>
+                <div>
+                  {booze.producer} 
+                </div>
+                <div>
+                  {booze.country}
+                </div>
+                <div>{booze.price} SEK</div>
+                <div>{booze.volume}ml</div><br/>
+              </div>
+            );
+          })}
+        </div>
+      );
+    } else {
+      renderBoozeOptions = <div id="message">{this.state.message}</div>;
+    }
     return (
       <>
         <form id="search-by-name" onSubmit={this.onSubmitFormHandler}>
@@ -103,7 +148,7 @@ class App extends Component {
               type="text"
               id="name-search"
               className="prompt"
-              placeholder="Search by drink name"
+              placeholder="Search by cocktail name"
             ></input>
             <div>
               <button id="search" type="submit" className="ui pink button">
@@ -113,6 +158,7 @@ class App extends Component {
           </div>
         </form>
         {renderDetails}
+        {renderBoozeOptions}
         {renderResults}
       </>
     );

@@ -9,8 +9,8 @@
 }
 .ui.input.focus {
   position: absolute;
-  left: 50%;
-  margin-left: -50px;
+  left: 45%;
+  margin-left: -40px;
   margin-top: 150px;
 }
 
@@ -22,16 +22,16 @@
 }
 #measurements {
   font-weight: bold;
-  margin-left: 5%;
+  margin-left: 2%;
   text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255),
     -1px 1px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
 }
 
 #instructions {
   line-height: normal;
-  width: 500px;
-  height: 302px;
-  font-size: x-large;
+  width: 450px;
+  height: 200px;
+  font-size: large;
   margin-left: 50px;
   text-align: center;
   border-radius: 10px;
@@ -99,5 +99,29 @@
 }
 
 #booze-options {
-  
+  text-align: right;
+  float: left;
+  color: lightgrey;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding-right: 2%;
+  padding-top: 3%
+}
+
+#booze-button {
+  display: inline;
+  width: 85px;
+  height: 20px;
+  font-size: 7pt;
+  margin-top: 5px;
+  margin-left: 15px;
+  text-align: center;
+}
+
+#title {
+  font-weight: bolder;
 }
