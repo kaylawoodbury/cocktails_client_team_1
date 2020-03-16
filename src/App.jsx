@@ -110,19 +110,19 @@ class App extends Component {
           {this.state.boozeResults.map(booze => {
             return (
               <div>
-                <div id="booze-image">{booze.product_image}</div>
+                <div id="booze-image">{booze.image}</div>
                 <div id="title">
-                  {booze.product_name}
-                  {booze.product_name_2}
+                  {booze.name}
+                  {booze.name_2}
                 </div>
                 <div>
-                  {booze.product_producer}
-                  {booze.product_category}
-                  {booze.product_type}
-                  {booze.product_country}
+                  {booze.producer}
+                  {booze.category}
+                  {booze.type}
+                  {booze.country}
                 </div>
-                <div>{booze.product_price} SEK</div>
-                <div>{booze.product_volume}ml</div>
+                <div>{booze.price} SEK</div>
+                <div>{booze.volume}ml</div>
               </div>
             );
           })}
