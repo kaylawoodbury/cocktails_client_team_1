@@ -28,8 +28,6 @@ describe("User can find", () => {
     cy.get("#booze-button").click();
     cy.get("#booze-options").should("contain", "Cenote");
     cy.get("#booze-options").should("contain", "Tequila Blanco");
-    cy.get("#booze-options").should("contain", "Sprit");
-    cy.get("#booze-options").should("contain", "Fabrica De Tequilas Finos");
     cy.get("#booze-options").should("contain", "699");
     cy.get("#booze-options").should("contain", "Mexiko");
     cy.get("#booze-options").should("contain", "Cenote Tequila");
