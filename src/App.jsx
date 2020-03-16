@@ -38,10 +38,10 @@ class App extends Component {
     let booze;
 
     if (boozeType !== null) {
-      booze = await axios.get(`/cocktails/${boozeType}`);
+      booze = await axios.get(`/products/${boozeType}`);
     }
     this.setState({
-      boozeResults: booze.data.ProductSearchResults
+      boozeResults: booze.data.results
     });
   }
 

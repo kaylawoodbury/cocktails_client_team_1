@@ -22,7 +22,7 @@ describe("User can find", () => {
   it("ingredient options from System Bolaget", () => {
     cy.route({
       method: "GET",
-      url: "**/cocktails/**",
+      url: "**/products/**",
       response: "fixture:tequila_list.json"
     });
     cy.get("#booze-button").click();
