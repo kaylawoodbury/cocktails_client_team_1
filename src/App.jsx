@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 class App extends Component {
   state = {
-    query: "",
+    // query: "",
     results: [],
     message: "",
     details: {},
@@ -12,7 +12,7 @@ class App extends Component {
     e.preventDefault();
     let response = await axios.get('/cocktails', {
       params: {
-        s: e.target.query.value
+        q: e.target.query.value
       }
     });
     debugger
