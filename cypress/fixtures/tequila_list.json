@@ -7,7 +7,7 @@
       "name_2": null,
       "category": "Sprit",
       "producer": "Tequilas las Americas",
-      "price": 428.0,
+      "price": 428,
       "country": "Mexiko",
       "type": "Tequila",
       "volume": 700
@@ -19,7 +19,7 @@
       "name_2": "Tequila Blanco",
       "category": "Sprit",
       "producer": "Fabrica De Tequilas Finos",
-      "price": 699.0,
+      "price": 699,
       "country": "Mexiko",
       "type": "Tequila",
       "volume": 700
@@ -31,7 +31,7 @@
       "name_2": "Rojo Tequila Reposado",
       "category": "Sprit",
       "producer": "Fabrica De Tequilas Finos",
-      "price": 399.0,
+      "price": 399,
       "country": "Mexiko",
       "type": "Tequila",
       "volume": 700
@@ -43,7 +43,7 @@
       "name_2": "Cristallino Anejo",
       "category": "Sprit",
       "producer": "Fabrica De Tequilas Finos",
-      "price": 999.0,
+      "price": 999,
       "country": "Mexiko",
       "type": "Tequila",
       "volume": 700
@@ -55,7 +55,7 @@
       "name_2": "Tequila Silver",
       "category": "Sprit",
       "producer": "Tequilas del Señor",
-      "price": 512.0,
+      "price": 512,
       "country": "Mexiko",
       "type": "Tequila",
       "volume": 700
