@@ -7,7 +7,7 @@ describe("User can find", () => {
       url: "**/cocktails",
       response: "fixture:margarita_drink_search.json",
       body: {
-        s: "Margarita"
+        q: "Margarita"
       }
     });
     cy.get("#name-search.prompt").type("Margarita");
@@ -25,8 +25,11 @@ describe("User can find", () => {
   it("ingredient options from System Bolaget", () => {
     cy.route({
       method: "GET",
-      url: "**/products/**",
-      response: "fixture:tequila_list.json"
+      url: "**/products",
+      response: "fixture:tequila_list.json",
+      body: {
+        q: "Tequila"
+      }
     });
     cy.get("#booze-button").click();
     cy.get("#booze-options").should("contain", "Cenote");
