@@ -87,27 +87,27 @@ class App extends Component {
       renderDetails = (
         <div id="details">
           <div id="details-side">
-          <h4 id="details-title">{drinkDetails.name}</h4>
-          <img id="drink-image" src={drinkDetails.image} alt="Drink Image"/> <br />
-          <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
-          <u id="ingredient-text">Ingredients:</u>{" "}
-          {drinkDetails.ingredients.map(content => {
-            return (
-              <div id="ingredient-details">
-                <div id="details-name" key={content.name}>
-                  <button
-                    id="booze-button"
-                    onClick={this.seeBoozeList.bind(this)}
-                    key={content.name}
-                    className="ui yellow button"
-                  >
-                    Show the Booze!
-                </button>  
-                {content.name}: {content.measure}
+            <h4 id="details-title">{drinkDetails.name}</h4>
+            <img id="drink-image" src={drinkDetails.image} alt="Drink Image" /> <br />
+            <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
+            <u id="ingredient-text">Ingredients:</u>{" "}
+            {drinkDetails.ingredients.map(content => {
+              return (
+                <div id="ingredient-details">
+                  <div id="details-name" key={content.name}>
+                    <button
+                      id="booze-button"
+                      onClick={this.seeBoozeList.bind(this)}
+                      key={content.name}
+                      className="ui yellow button"
+                    >
+                      Show the Booze!
+                </button>
+                    {content.name}: {content.measure}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
           </div>
           <div id="instructions">
             <u>Instructions:</u> {drinkDetails.instructions}
@@ -126,17 +126,17 @@ class App extends Component {
             return (
               <div>
                 <div id="title">
-                  {booze.name} 
+                  {booze.name}
                 </div>
                 {booze.name_2}
                 <div>
                   {booze.producer} | {booze.country}
                 </div>
-                <div>{booze.price} SEK | {booze.volume}ml</div><br/>
+                <div>{booze.price} SEK | {booze.volume}ml</div><br />
               </div>
             );
           })}
-          </div>
+        </div>
       );
     } else {
       renderBoozeOptions = <div id="message">{this.state.message}</div>;
@@ -160,9 +160,9 @@ class App extends Component {
           </div>
         </form>
         <div id="shadow">
-        {renderDetails}
-        {renderBoozeOptions}
-        {renderResults}
+          {renderDetails}
+          {renderBoozeOptions}
+          {renderResults}
         </div>
       </>
     );
