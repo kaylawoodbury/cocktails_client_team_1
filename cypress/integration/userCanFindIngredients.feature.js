@@ -37,6 +37,5 @@ describe("User can find", () => {
     cy.get("#booze-options").should("contain", "699");
     cy.get("#booze-options").should("contain", "Mexiko");
     cy.get("#booze-options").should("contain", "Cenote Tequila");
-    cy.get("#booze-options").should("contain", "Reserva del Señor");
   });
 });
