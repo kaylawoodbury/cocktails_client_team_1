@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 class App extends Component {
   state = {
-    // query: "",
     results: [],
     message: "",
     details: {},
@@ -15,7 +14,6 @@ class App extends Component {
         q: e.target.query.value
       }
     });
-    debugger
     if (response.status === 400) {
       this.setState({
         message: response.data.message
@@ -41,9 +39,12 @@ class App extends Component {
   async seeBoozeList(event) {
     let boozeType = event._targetInst.key;
     let booze;
-
     if (boozeType !== null) {
-      booze = await axios.get(`/products/${boozeType}`);
+      booze = await axios.get('/products', {
+        params: {
+          q: boozeType
+        }
+      });
     }
     this.setState({
       boozeResults: booze.data.results
@@ -63,7 +64,7 @@ class App extends Component {
                 <div id="drink-name" key={item.id} data-id={item.id}>
                   {item.name}
                   <button
-                    className="ui red basic button"
+                    className="ui yellow button"
                     id="details-button"
                     onClick={this.seeDetails.bind(this)}
                     key={item.id}
@@ -85,29 +86,29 @@ class App extends Component {
     if (drinkDetails.id > 0) {
       renderDetails = (
         <div id="details">
-          <h4 id="details-title">{drinkDetails.name}</h4>
-          <img id="drink-image" src={drinkDetails.image} alt="Drink Image"/> <br />
-          <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
-          <u id="ingredient-text">Ingredients:</u>{" "}
-          {drinkDetails.ingredients.map(content => {
-            return (
-              <div id="ingredient-details">
-                <div id="details-name" key={content.name}>
-                  {content.name}
-                  <button
-                    id="booze-button"
-                    onClick={this.seeBoozeList.bind(this)}
-                    key={content.name}
-                    className="ui pink button"
-                  >
-                    Show Booze!
+          <div id="details-side">
+            <h4 id="details-title">{drinkDetails.name}</h4>
+            <img id="drink-image" src={drinkDetails.image} alt="Drink Image" /> <br />
+            <u id="glass-text">Glass:</u> {drinkDetails.glass} <br />
+            <u id="ingredient-text">Ingredients:</u>{" "}
+            {drinkDetails.ingredients.map(content => {
+              return (
+                <div id="ingredient-details">
+                  <div id="details-name" key={content.name}>
+                    <button
+                      id="booze-button"
+                      onClick={this.seeBoozeList.bind(this)}
+                      key={content.name}
+                      className="ui yellow button"
+                    >
+                      Show the Booze!
                 </button>
+                    {content.name}: {content.measure}
+                  </div>
                 </div>
-                <div id="measurements">{content.measure}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
           <div id="instructions">
             <u>Instructions:</u> {drinkDetails.instructions}
           </div>
@@ -120,22 +121,18 @@ class App extends Component {
     ) {
       renderBoozeOptions = (
         <div id="booze-options">
+          <h2>Booze Options</h2>
           {this.state.boozeResults.map(booze => {
             return (
               <div>
-                <div id="booze-image">{booze.image}</div>
                 <div id="title">
                   {booze.name}
-                  {booze.name_2}
                 </div>
+                {booze.name_2}
                 <div>
-                  {booze.producer} 
+                  {booze.producer} | {booze.country}
                 </div>
-                <div>
-                  {booze.country}
-                </div>
-                <div>{booze.price} SEK</div>
-                <div>{booze.volume}ml</div><br/>
+                <div>{booze.price} SEK | {booze.volume}ml</div><br />
               </div>
             );
           })}
@@ -156,15 +153,17 @@ class App extends Component {
               placeholder="Search by cocktail name"
             ></input>
             <div>
-              <button id="search" type="submit" className="ui pink button">
+              <button id="search" type="submit" className="ui yellow button">
                 Search
               </button>
             </div>
           </div>
         </form>
-        {renderDetails}
-        {renderBoozeOptions}
-        {renderResults}
+        <div id="shadow">
+          {renderDetails}
+          {renderBoozeOptions}
+          {renderResults}
+        </div>
       </>
     );
   }

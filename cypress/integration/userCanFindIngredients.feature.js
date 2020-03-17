@@ -7,7 +7,7 @@ describe("User can find", () => {
       url: "**/cocktails",
       response: "fixture:margarita_drink_search.json",
       body: {
-        s: "Margarita"
+        q: "Margarita"
       }
     });
     cy.get("#name-search.prompt").type("Margarita");
@@ -25,8 +25,11 @@ describe("User can find", () => {
   it("ingredient options from System Bolaget", () => {
     cy.route({
       method: "GET",
-      url: "**/products/**",
-      response: "fixture:tequila_list.json"
+      url: "**/products",
+      response: "fixture:tequila_list.json",
+      body: {
+        q: "Tequila"
+      }
     });
     cy.get("#booze-button").click();
     cy.get("#booze-options").should("contain", "Cenote");
@@ -34,6 +37,5 @@ describe("User can find", () => {
     cy.get("#booze-options").should("contain", "699");
     cy.get("#booze-options").should("contain", "Mexiko");
     cy.get("#booze-options").should("contain", "Cenote Tequila");
-    cy.get("#booze-options").should("contain", "Reserva del Señor");
   });
 });
