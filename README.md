@@ -32,10 +32,10 @@
 **Front End:** React v. | CSS  
 **Back End:** Ruby 2.5.1 | Rails 6.0.2 
 **Testing framework:** Cypress  
-**Deployed at:** [Netlify]() and [Heroku](h).
+**Deployed at:** [Netlify](https://tippler-team1.netlify.com/) and [Heroku](https://cocktails-api-team1.herokuapp.com).
 
 ## The code   
-This project 
+This project allows the user to look up cocktails by name or partial name and see a list of results that the user can then select from to see additional details. The drink details include an image, glass type, ingredients and instructions. Next to the ingredients, the user has the option to see the options System Bolaget has for the required alcohol. This application uses a Rails [backend]() which links to two different third party APIs for the [cocktail]() information and the [System Bolaget](). 
 
 ## Getting started
 ### Dependencies  
@@ -43,6 +43,7 @@ This project
 * React
 * Cypress
 * Axios
+* Semantic UI
 
 ### Setup   
 To test this application, fork the repo to your own GitHub account and clone it to your local workspace. </br>
@@ -65,11 +66,15 @@ $ yarn start
 ```
 
 ## Updates/Improvements   
-- T
+- Remove the 'Show the Booze' buttons from the non-alcoholic ingredients
+- More styling
+- Add log in functionality
+- Add ability for use to save a drink to a personal list
+- Add geolocation to only show the booze options at the System Bolaget closest to the user
 
 ## License  
 [MIT-license](https://en.wikipedia.org/wiki/MIT_License)
 
 ### Acknowledgement  
 - Material provided by [Craft Academy](https://craftacademy.se)
-- [Thomas Ochman]() for 
+- Thomas Ochman for guidance and demos
